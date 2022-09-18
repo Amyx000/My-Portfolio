@@ -1,0 +1,22 @@
+
+body{
+    margin: 0;
+}
+
+
+.div1,.div2,.div3{
+    display: grid;
+    align-items: center;
+    justify-items: center;
+    font-size: 100px;
+    font-weight: bold;
+    color: white;
+    background-color: black;
+    height: 100vh;
+}
+
+.div3{
+    font-size: 20px;
+    font-weight: 400;
+    padding: 0 200px;
+}
