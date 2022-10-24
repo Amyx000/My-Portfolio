@@ -25,7 +25,6 @@ body{
     align-items: center;
     justify-items: center;
     font-size: 100px;
-    font-weight: bold;
     color: white;
     background-color: black;
     height: 100vh;
@@ -38,10 +37,63 @@ body{
 }
 
 .projmain{
+    height: 100vh;
+    display: grid;
+    grid-template-columns: repeat(4,100%);
+}
+
+
+.projmain>div:nth-child(even){
+    background-color: black;
+    border-radius: 80px;
+}
+.projmain>div:nth-child(odd){
+    background-color: black;
+    border-radius: 80px;
+}
+
+.connect{
+    background-color: black;
+    text-align: center;
+    height: 100vh;
+    box-sizing: border-box;
     display: flex;
-    width: 400%;
-    height: 25vh;
-    background-color: blue;
-    flex-wrap: nowrap;
+    flex-direction: column;
     justify-content: space-around;
+}
+
+ .connect form {
+    display: flex;
+    flex-direction: column;
+    gap:10px;
+    width: 40vw;
+    justify-content: space-between;
+}
+
+.connect input{
+    border: 1px solid white;
+    background-color: transparent;
+    padding: 10px 20px;
+    color: red;
+    border-radius: 0;
+}
+
+.connect input[type="submit"]{
+    cursor: pointer;
+}
+
+.connect-mail{
+    display: flex;
+    gap:10px;
+    justify-content: center;
+}
+
+.connect-mail>div:nth-child(1){
+    display: grid;
+    align-items: center;
+    /* border: 1px solid white; */
+}
+
+.connect-mail>div:nth-child(1)>span{
+    transform: rotate(-90deg);
 }

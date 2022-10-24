@@ -4,6 +4,7 @@ import { gsap } from "gsap"
 import { useRef } from "react";
 import { useEffect } from "react";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { FaTwitter, FaGithub } from "react-icons/fa"
 
 function Content() {
     const ref = useRef()
@@ -69,30 +70,60 @@ function Content() {
         )
     }, [])
 
-    useEffect(()=>{
+    useEffect(() => {
         const element = ref.current
         let sections = gsap.utils.toArray(".panel")
         gsap.to(sections, {
-            xPercent: -10000 * (sections.length - 1),
+            xPercent: -100 * (sections.length - 1),
             ease: "none",
             scrollTrigger: {
-              trigger: element.querySelector(".projmain"),
-              pin: element.querySelector(".projmain"),
-              scrub: 1,
-              snap: 1 / (sections.length - 1),
-              // base vertical scrolling on how wide the container is so it feels more natural.
-              end: () => "+=" + element.querySelector(".projmain").offsetWidth
+                trigger: element.querySelector(".projmain"),
+                pin: true,
+                //   pinSpacing:false,
+                scrub: 1,
+                snap: 1 / (sections.length - 1),
+                // base vertical scrolling on how wide the container is so it feels more natural.
+                end: () => "+=" + element.querySelector(".projmain").offsetWidth
             }
-          });
-    },[])
+        });
+    }, [])
 
+    useEffect(() => {
+        const element = ref.current
+        gsap.fromTo(
+            element.querySelector(".connect"),
+            {
+                x: -1000,
+            },
+            {
+                x: 0,
+                scrollTrigger: {
+                    trigger: element.querySelector(".connect"),
+                    pin: element.querySelector(".connect"),
+                    start: "top top",
+                    end: "bottom top",
+                    scrub: true
+                }
+            }
+        )
+    }, [])
+
+    const scrollFunc = (e) => {
+        if(e.target.innerHTML==="Contact"){
+            window.scrollTo({
+                bottom:0, top:document.body.scrollHeight, behavior: "smooth"
+            });
+        }else{
+        ref.current.querySelector(".projmain").scrollIntoView({ behavior: "smooth" })
+        }
+    }
 
     return (
         <>
             <div ref={ref}>
                 <div className="header">
-                    <div>Project</div>
-                    <div>Contact</div>
+                    <div style={{"cursor":"pointer"}} onClick={(e)=>scrollFunc(e)}>Project</div>
+                    <div style={{"cursor":"pointer"}} onClick={(e)=>scrollFunc(e)}>Contact</div>
                 </div>
 
                 <div className="div1">Hello, I'm Arman</div>
@@ -108,6 +139,22 @@ function Content() {
                     <div className='panel'>Project 2</div>
                     <div className='panel'>Project 3</div>
                     <div className='panel'>Project 4</div>
+                </div>
+
+                <div className="connect">
+                    <div className="connect-head" style={{ "fontSize": "3rem" }}>Connect with me</div>
+                    <div style={{"display":"flex","justifyContent":"center","gap":"20px"}}>
+                        <a style={{ "color": "white" }} href="https://twitter.com/Armankazi111" target={"_blank"} rel="noreferrer noopener"><FaTwitter style={{ "fontSize": "3rem" }} /></a>
+                        <a style={{ "color": "white" }} href="https://github.com/Amyx000" target={"_blank"} rel="noreferrer noopener"><FaGithub style={{ "fontSize": "3rem" }} /></a>
+                    </div>
+                    <div className="connect-mail">
+                        <div><span>MAILBOX</span></div>
+                        <form>
+                            <input type={"email"} placeholder="Email" />
+                            <input type={"text"} placeholder="Message" style={{ "height": "100px" }} />
+                            <input type={"submit"} value="Send" />
+                        </form>
+                    </div>
                 </div>
 
             </div>
