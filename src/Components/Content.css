@@ -97,3 +97,83 @@ body{
 .connect-mail>div:nth-child(1)>span{
     transform: rotate(-90deg);
 }
+
+.panel>div{
+    width: 50%;
+    height: 90%;
+    border: 1px solid white;
+    border-radius: 20px;
+    display: grid;
+    justify-items: center;
+    align-items: center;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+}
+
+.panel{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: black;
+}
+
+.panel img{
+    width: 90%;
+    aspect-ratio: 1920/902;
+    object-fit: cover;
+    border-radius: 20px;
+}
+
+.panel-hover{
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    text-align: center;
+    width: 100%;
+    height: 200px;
+    border-radius: 20px;
+    background-color: rgb(22, 22, 22);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    transform: translateY(200px);
+    transition: all 0.5s ease-in-out;
+}
+.panel-hover-open{
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    text-align: center;
+    width: 100%;
+    height: 200px;
+    border-radius: 20px;
+    background-color: rgb(22, 22, 22);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    transform: translateY(0);
+    transition: all 0.5s ease-in-out;
+}
+
+.panel-head{
+    font-size: 25px;
+}
+.panel-hover>div:nth-child(2){
+    padding: 0 90px;
+    text-align: justify;
+}
+.panel-hover-open>div:nth-child(2){
+    padding: 0 90px;
+    text-align: justify;
+}
+
+.panel-link{
+    color: red;
+    text-decoration: none;
+}
+.panel-link:hover{
+    text-decoration: underline;
+}

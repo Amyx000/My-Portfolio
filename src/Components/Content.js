@@ -1,14 +1,17 @@
-import React from "react";
+import React, { useState } from "react";
 import "./Content.css"
 import { gsap } from "gsap"
 import { useRef } from "react";
 import { useEffect } from "react";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { FaTwitter, FaGithub } from "react-icons/fa"
+import { projects } from "../projectdata"
 
 function Content() {
+    console.log(projects)
     const ref = useRef()
     gsap.registerPlugin(ScrollTrigger)
+    const [card,Setcard]=useState("panel-hover")
 
     useEffect(() => {
         const element = ref.current
@@ -109,12 +112,12 @@ function Content() {
     }, [])
 
     const scrollFunc = (e) => {
-        if(e.target.innerHTML==="Contact"){
+        if (e.target.innerHTML === "Contact") {
             window.scrollTo({
-                bottom:0, top:document.body.scrollHeight, behavior: "smooth"
+                bottom: 0, top: document.body.scrollHeight, behavior: "smooth"
             });
-        }else{
-        ref.current.querySelector(".projmain").scrollIntoView({ behavior: "smooth" })
+        } else {
+            ref.current.querySelector(".projmain").scrollIntoView({ behavior: "smooth" })
         }
     }
 
@@ -122,8 +125,8 @@ function Content() {
         <>
             <div ref={ref}>
                 <div className="header">
-                    <div style={{"cursor":"pointer"}} onClick={(e)=>scrollFunc(e)}>Project</div>
-                    <div style={{"cursor":"pointer"}} onClick={(e)=>scrollFunc(e)}>Contact</div>
+                    <div style={{ "cursor": "pointer" }} onClick={(e) => scrollFunc(e)}>Project</div>
+                    <div style={{ "cursor": "pointer" }} onClick={(e) => scrollFunc(e)}>Contact</div>
                 </div>
 
                 <div className="div1">Hello, I'm Arman</div>
@@ -135,15 +138,26 @@ function Content() {
                 </div>
 
                 <div className='projmain'>
-                    <div className='panel'>Project 1</div>
-                    <div className='panel'>Project 2</div>
-                    <div className='panel'>Project 3</div>
-                    <div className='panel'>Project 4</div>
+                    {projects.map((item,index) => {
+                        return (
+                            <div className='panel' key={index}>
+                                <div onMouseEnter={()=>Setcard("panel-hover-open")} onMouseLeave={()=>Setcard("panel-hover")}>
+                                    <img src={item.img} alt=""></img>
+                                    <div className="panel-head">{item.name}</div>
+                                    <div className={card}>
+                                        <div className="panel-head">{item.name}</div>
+                                        <div>{item.des}</div>
+                                        <a className="panel-link" href={item.url} target={"_blank"} rel={"noreferrer noopener"}>Checkout</a>
+                                    </div>
+                                </div>
+                            </div>
+                        )
+                    })}
                 </div>
 
                 <div className="connect">
                     <div className="connect-head" style={{ "fontSize": "3rem" }}>Connect with me</div>
-                    <div style={{"display":"flex","justifyContent":"center","gap":"20px"}}>
+                    <div style={{ "display": "flex", "justifyContent": "center", "gap": "20px" }}>
                         <a style={{ "color": "white" }} href="https://twitter.com/Armankazi111" target={"_blank"} rel="noreferrer noopener"><FaTwitter style={{ "fontSize": "3rem" }} /></a>
                         <a style={{ "color": "white" }} href="https://github.com/Amyx000" target={"_blank"} rel="noreferrer noopener"><FaGithub style={{ "fontSize": "3rem" }} /></a>
                     </div>
