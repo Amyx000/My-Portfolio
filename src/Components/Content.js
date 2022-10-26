@@ -8,17 +8,20 @@ import { FaTwitter, FaGithub } from "react-icons/fa"
 import { projects } from "../projectdata"
 
 function Content() {
-    console.log(projects)
     const ref = useRef()
     gsap.registerPlugin(ScrollTrigger)
-    const [card,Setcard]=useState("panel-hover")
+    const [card, Setcard] = useState({"ind":"","class":"panel-hover"})
+    const [formdata, Setformdata] = useState({
+        "email": "",
+        "msg": ""
+    })
 
     useEffect(() => {
         const element = ref.current
         gsap.fromTo(
             element.querySelector(".div1"),
             {
-                x: 1000
+                
             },
             {
                 x: 0,
@@ -38,7 +41,7 @@ function Content() {
         gsap.fromTo(
             element.querySelector(".div2"),
             {
-                x: -1000,
+
             },
             {
                 x: 0,
@@ -58,10 +61,11 @@ function Content() {
         gsap.fromTo(
             element.querySelector(".div3"),
             {
-                x: 1000,
+               
             },
             {
                 x: 0,
+                scale:1.5,
                 scrollTrigger: {
                     trigger: element.querySelector(".div3"),
                     pin: element.querySelector(".div3"),
@@ -96,7 +100,7 @@ function Content() {
         gsap.fromTo(
             element.querySelector(".connect"),
             {
-                x: -1000,
+                
             },
             {
                 x: 0,
@@ -121,6 +125,27 @@ function Content() {
         }
     }
 
+    const handleSubmit = async(e) => {
+        e.preventDefault();
+       await window.Email.send({
+            SecureToken: process.env.REACT_APP_SEC_TOKEN,
+            To: process.env.REACT_APP_EMAIL,
+            From: formdata.email,
+            Subject: "MSG from Portfolio",
+            Body: formdata.msg
+        }).then(
+            message => alert(message)
+        );
+        Setformdata({
+            "email": "",
+            "msg": ""
+        })
+    }
+    const handleChange = (e) => {
+        const { name, value } = e.target
+        Setformdata({ ...formdata, [name]: value })
+    }
+
     return (
         <>
             <div ref={ref}>
@@ -138,13 +163,13 @@ function Content() {
                 </div>
 
                 <div className='projmain'>
-                    {projects.map((item,index) => {
+                    {projects.map((item, index) => {
                         return (
                             <div className='panel' key={index}>
-                                <div onMouseEnter={()=>Setcard("panel-hover-open")} onMouseLeave={()=>Setcard("panel-hover")}>
+                                <div onMouseEnter={() => Setcard({"ind":index,"class":"panel-hover-open"})} onMouseLeave={() => Setcard({"ind":"","class":"panel-hover"})} onTouchStart={() => Setcard({"ind":index,"class":"panel-hover-open"})} onTouchEnd={() => Setcard({"ind":"","class":"panel-hover"})}>
                                     <img src={item.img} alt=""></img>
                                     <div className="panel-head">{item.name}</div>
-                                    <div className={card}>
+                                    <div className={card.ind!==index?"panel-hover":card.class}>
                                         <div className="panel-head">{item.name}</div>
                                         <div>{item.des}</div>
                                         <a className="panel-link" href={item.url} target={"_blank"} rel={"noreferrer noopener"}>Checkout</a>
@@ -163,9 +188,9 @@ function Content() {
                     </div>
                     <div className="connect-mail">
                         <div><span>MAILBOX</span></div>
-                        <form>
-                            <input type={"email"} placeholder="Email" />
-                            <input type={"text"} placeholder="Message" style={{ "height": "100px" }} />
+                        <form onSubmit={handleSubmit}>
+                            <input value={formdata.email} onChange={handleChange} name="email" type={"email"} placeholder="Email" required />
+                            <input value={formdata.msg} onChange={handleChange} name="msg" type={"text"} placeholder="Message" required style={{ "height": "100px" }} />
                             <input type={"submit"} value="Send" />
                         </form>
                     </div>
