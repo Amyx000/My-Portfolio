@@ -10,7 +10,7 @@ import { projects } from "../projectdata"
 function Content() {
     const ref = useRef()
     gsap.registerPlugin(ScrollTrigger)
-    const [card, Setcard] = useState({"ind":"","class":"panel-hover"})
+    const [card, Setcard] = useState({ "ind": "", "class": "panel-hover" })
     const [formdata, Setformdata] = useState({
         "email": "",
         "msg": ""
@@ -19,9 +19,29 @@ function Content() {
     useEffect(() => {
         const element = ref.current
         gsap.fromTo(
+            element.querySelector(".firstpage"),
+            {
+
+            },
+            {
+                opacity:0,
+                scrollTrigger: {
+                    trigger: element.querySelector(".firstpage"),
+                    pin: element.querySelector(".firstpage"),
+                    start: "top top",
+                    end: "bottom center",
+                    scrub: true
+                }
+            }
+        )
+    }, [])
+
+    useEffect(() => {
+        const element = ref.current
+        gsap.fromTo(
             element.querySelector(".div1"),
             {
-                
+
             },
             {
                 x: 0,
@@ -61,11 +81,11 @@ function Content() {
         gsap.fromTo(
             element.querySelector(".div3"),
             {
-               
+
             },
             {
                 x: 0,
-                scale:1.5,
+                scale: 1.5,
                 scrollTrigger: {
                     trigger: element.querySelector(".div3"),
                     pin: element.querySelector(".div3"),
@@ -100,7 +120,7 @@ function Content() {
         gsap.fromTo(
             element.querySelector(".connect"),
             {
-                
+
             },
             {
                 x: 0,
@@ -125,9 +145,9 @@ function Content() {
         }
     }
 
-    const handleSubmit = async(e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
-       await window.Email.send({
+        await window.Email.send({
             SecureToken: process.env.REACT_APP_SEC_TOKEN,
             To: process.env.REACT_APP_EMAIL,
             From: formdata.email,
@@ -154,22 +174,37 @@ function Content() {
                     <div style={{ "cursor": "pointer" }} onClick={(e) => scrollFunc(e)}>Contact</div>
                 </div>
 
+                <div className="firstpage">
+                    <div>Welcome!</div>
+                    <div class="mouse_scroll">
+
+                        <div class="mouse">
+                            <div class="wheel"></div>
+                        </div>
+                        <div>
+                            <span class="m_scroll_arrows unu"></span>
+                            <span class="m_scroll_arrows doi"></span>
+                            <span class="m_scroll_arrows trei"></span>
+                        </div>
+                    </div>
+                </div>
+
                 <div className="div1">Hello, I'm Arman</div>
                 <div className="div2">A Full Stack Developer</div>
                 <div className="div3">
-                    I use MERN stack technology to create my projects. I am facinated
+                    I use MERN stack technology to create my projects. I am more facinated
                     by vanilla CSS more than any frameworks, because I love to
-                    create my own styles. I use React.js for all of my frontend part.
+                    create my own styles and I'm always self-motivated and passionate to learn new technologies.
                 </div>
 
                 <div className='projmain'>
                     {projects.map((item, index) => {
                         return (
                             <div className='panel' key={index}>
-                                <div onMouseEnter={() => Setcard({"ind":index,"class":"panel-hover-open"})} onMouseLeave={() => Setcard({"ind":"","class":"panel-hover"})} onTouchStart={() => Setcard({"ind":index,"class":"panel-hover-open"})} onTouchEnd={() => Setcard({"ind":"","class":"panel-hover"})}>
+                                <div onClick={() => Setcard({ "ind": index, "class": "panel-hover-open" })} onMouseEnter={() => Setcard({ "ind": index, "class": "panel-hover-open" })} onMouseLeave={() => Setcard({ "ind": "", "class": "panel-hover" })} onTouchStart={() => Setcard({ "ind": index, "class": "panel-hover-open" })} onTouchEnd={() => Setcard({ "ind": "", "class": "panel-hover" })}>
                                     <img src={item.img} alt=""></img>
                                     <div className="panel-head">{item.name}</div>
-                                    <div className={card.ind!==index?"panel-hover":card.class}>
+                                    <div className={card.ind !== index ? "panel-hover" : card.class}>
                                         <div className="panel-head">{item.name}</div>
                                         <div>{item.des}</div>
                                         <a className="panel-link" href={item.url} target={"_blank"} rel={"noreferrer noopener"}>Checkout</a>
