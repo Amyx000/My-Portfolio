@@ -13,6 +13,12 @@ export const projects = [
         "url":"https://github.com/Amyx000/Ecommerce-Mern-Stack"
     },
     {
+        "name":"My Portfolio",
+        "img":"https://user-images.githubusercontent.com/104687128/198199069-6faa8f74-6820-4442-a2ec-5d06a030c072.png",
+        "des":"This is my portfolio website, created to showcase my work. It is made using React.js and GSAP.",
+        "url":"https://github.com/Amyx000/My-Portfolio"
+    },
+    {
         "name":"Apple Tv Clone Website",
         "img":"https://user-images.githubusercontent.com/104687128/197692491-54798f5d-524e-468f-880f-e5e5e9050964.png",
         "des":"A Apple Tv Clone website made using React.js",

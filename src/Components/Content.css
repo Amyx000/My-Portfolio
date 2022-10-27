@@ -21,7 +21,9 @@ body,html{
     z-index: 100;
     color: red;
 }
-
+.header>div{
+    border: 1px solid transparent;
+}
 
 .div1,.div2,.div3{
     text-align: center;
@@ -49,7 +51,7 @@ body,html{
 .projmain{
     height: 100vh;
     display: grid;
-    grid-template-columns: repeat(4,100%);
+    grid-template-columns: repeat(5,100%);
 }
 
 
@@ -197,6 +199,12 @@ body,html{
     text-decoration: underline;
 }
 
+@media screen and (min-width:501px) {
+    .header>div:hover{
+        border: 1px solid red;
+    }
+}
+
 @media screen and (max-width:700px) {
     .panel>div{
         width: 70%;
@@ -225,5 +233,8 @@ body,html{
     }
     .div2,.connect{
         transform: translateX(-350px);
+    }
+    .header>div:active{
+        border: 1px solid red;
     }
 }
