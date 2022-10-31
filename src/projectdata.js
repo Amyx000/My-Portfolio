@@ -19,7 +19,7 @@ export const projects = [
         "url":"https://github.com/Amyx000/My-Portfolio"
     },
     {
-        "name":"Apple Tv Clone Website",
+        "name":"Apple Tv Clone",
         "img":"https://user-images.githubusercontent.com/104687128/198219589-2a909d34-0ac2-40d5-84c9-2ae2ad9e683d.png",
         "des":"A Apple Tv Clone website made using React.js",
         "url":"https://github.com/Amyx000/Apple-Tv-Clone"
