@@ -62,7 +62,7 @@ body,html{
 .projmain{
     height: 100vh;
     display: grid;
-    grid-template-columns: repeat(5,100%);
+    grid-template-columns: repeat(6,100%);
 }
 
 

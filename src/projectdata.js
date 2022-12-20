@@ -1,6 +1,12 @@
 
 export const projects = [
     {
+        "name":"Food Ordering Platform",
+        "img":"https://user-images.githubusercontent.com/104687128/206838391-3952368a-a4d5-4251-8bd3-cd5f527462c8.png",
+        "des":" This is a food ordering platform which is complete full stack app from frontend to backend, made using Mern stack tech.",
+        "url":"https://github.com/Amyx000/Food-Ordering-App"
+    },
+    {
         "name":"React Resume Builder",
         "img":"https://user-images.githubusercontent.com/104687128/196051871-03e088db-0066-4cd4-a3e5-db7254d25f09.png",
         "des":"This is a resume builder made by using React.js and Nhost services where a developer style resume can be build within a seconds.",
