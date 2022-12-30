@@ -37,3 +37,62 @@ export const projects = [
         "url":"https://github.com/Amyx000/Netflix-Landing-Page"
     },
 ]
+
+export const imgdata = [
+    {
+        name:"Html",
+        img:"https://symbols.getvecta.com/stencil_25/35_html5.d4d8050235.png"
+    },
+    {
+        name:"Css",
+        img:"https://symbols.getvecta.com/stencil_25/14_css3.d930bfb832.png"
+    },
+    {
+        name:"Bootstrap",
+        img:"https://symbols.getvecta.com/stencil_25/5_bootstrap.bbf5d3d59c.png"
+    },
+    {
+        name:"Tailwind Css",
+        img:"https://www.vectorlogo.zone/logos/tailwindcss/tailwindcss-icon.svg"
+    },
+    {
+        name:"Javascript",
+        img:"https://symbols.getvecta.com/stencil_25/39_javascript.0ca26ec4ab.png"
+    },
+    {
+        name:"Typescript",
+        img:"https://symbols.getvecta.com/stencil_25/85_typescript.cb2d7326fa.png"
+    },
+    {
+        name:"React",
+        img:"https://symbols.getvecta.com/stencil_25/70_react.76a8d36b4b.png"
+    },
+    {
+        name:"Redux",
+        img:"https://symbols.getvecta.com/stencil_25/71_redux.da27ac619d.png"
+    },
+    {
+        name:"Node",
+        img:"https://symbols.getvecta.com/stencil_25/61_nodejs.124d3fe0e1.png"
+    },
+    {
+        name:"MongoDb",
+        img:"https://symbols.getvecta.com/stencil_261/25_mongodb.cef7d00b8a.png"
+    },
+    {
+        name:"MySql",
+        img:"https://symbols.getvecta.com/stencil_261/27_mysql.4e2ff8ff6c.png"
+    },
+    {
+        name:"Figma",
+        img:"https://cdn.iconscout.com/icon/free/png-256/figma-3521426-2944870.png"
+    },
+    {
+        name:"Photoshop",
+        img:"https://cdn.iconscout.com/icon/free/png-256/adobe-photoshop-4238646-3516519.png"
+    },
+    {
+        name:"Github",
+        img:"https://cdn-icons-png.flaticon.com/512/4494/4494756.png"
+    },
+]

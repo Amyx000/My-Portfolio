@@ -5,7 +5,7 @@ import { useRef } from "react";
 import { useEffect } from "react";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { FaTwitter, FaGithub } from "react-icons/fa"
-import { projects } from "../projectdata"
+import { imgdata, projects } from "../projectdata"
 
 function Content() {
     const ref = useRef()
@@ -24,7 +24,7 @@ function Content() {
 
             },
             {
-                opacity:0,
+                opacity: 0,
                 scrollTrigger: {
                     trigger: element.querySelector(".firstpage"),
                     pin: element.querySelector(".firstpage"),
@@ -118,6 +118,26 @@ function Content() {
     useEffect(() => {
         const element = ref.current
         gsap.fromTo(
+            element.querySelector(".tech"),
+            {
+
+            },
+            {
+                x: 0,
+                scrollTrigger: {
+                    trigger: element.querySelector(".tech"),
+                    pin: element.querySelector(".tech"),
+                    start: "top top",
+                    end: "bottom top",
+                    scrub: true
+                }
+            }
+        )
+    }, [])
+
+    useEffect(() => {
+        const element = ref.current
+        gsap.fromTo(
             element.querySelector(".connect"),
             {
 
@@ -176,15 +196,15 @@ function Content() {
 
                 <div className="firstpage">
                     <div>Welcome!</div>
-                    <div class="mouse_scroll">
+                    <div className="mouse_scroll">
 
-                        <div class="mouse">
-                            <div class="wheel"></div>
+                        <div className="mouse">
+                            <div className="wheel"></div>
                         </div>
                         <div>
-                            <span class="m_scroll_arrows unu"></span>
-                            <span class="m_scroll_arrows doi"></span>
-                            <span class="m_scroll_arrows trei"></span>
+                            <span className="m_scroll_arrows unu"></span>
+                            <span className="m_scroll_arrows doi"></span>
+                            <span className="m_scroll_arrows trei"></span>
                         </div>
                     </div>
                 </div>
@@ -213,6 +233,19 @@ function Content() {
                             </div>
                         )
                     })}
+                </div>
+
+                <div className="tech">
+                    <div className="tech-head">Tech Stack</div>
+                    <div className="tech-main">
+                        {imgdata.map((item, index) => {
+                            return (
+                                <div key={index}>
+                                    <img className="tech-img" src={item.img} alt="" />
+                                </div>
+                            )
+                        })}
+                    </div>
                 </div>
 
                 <div className="connect">
